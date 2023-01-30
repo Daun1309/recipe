@@ -1,0 +1,241 @@
+
+@mixin flex($a: space-around, $b: center) {
+    display: flex;
+    justify-content: $a;
+    align-items: $b;
+    @content;
+}
+
+@keyframes fade-in-bottom {
+    0% {
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+    opacity: 0;
+    }
+    100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+    }
+}
+
+$mC : #53A069;
+$sC : #2E483E;
+
+@keyframes upDown {
+    0% {
+        transform: translateY(5px);
+    }
+    50%{
+        transform: translateY(-5px);
+    }
+    100%{
+        transform: translateY(5px);
+    }
+}
+
+
+.scrolls{
+    opacity: 0;
+    transition: opacity 500ms;
+}
+.scrolls.scrolled{
+    opacity: 1;
+    animation: fade-in-bottom .7s ease-in-out both;
+}
+
+
+.m-wrap{
+    @include flex(){
+        flex-direction: column;
+    }
+    .main-title{
+        width: 100%;
+        height: 100vh;
+        @include flex(center, center){}
+        background-size: cover;
+        background-position: 50% 50%;
+        img{
+            height: 230px;
+            width: 500px;
+        }
+    }
+    .main-app{
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        .a-wrap{
+            width: 100%;
+            height: 100%;
+            padding: 0 200px;
+            @include flex(space-between){}
+            .a-img-wrap{
+                width: 50%;
+                height: 100%;
+                position: relative;
+                .app-box{
+                    position: absolute;
+                    width: 300px;
+                    height: 600px;
+                    border-radius: 16px;
+                    box-shadow: 0 0 56px rgba(0,0,0,.3);
+                    background: #fff;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        padding: 20px 0;
+                    }
+                    &:nth-child(1){
+                        bottom: 50px;
+                        left: 55%;
+                    }
+                    &:nth-child(2){
+                        bottom: -100px;
+                        left: 5%;
+                    }
+                    &:nth-child(3){
+                        bottom: 150px;
+                        left: 30%;
+                    }
+                }
+            }
+            .a-text-box{
+                width: 50%;
+                height: 40%;
+                padding-right: 100px;
+                @include flex(space-around,flex-end){
+                    flex-direction: column;
+                }
+                h2{
+                    font-size: 48px;
+                    span{
+                        font-size: 48px;
+                        color: $mC;
+                    }
+                }
+                .end-hight{
+                    margin-top: 80px;
+                    animation: upDown 2s infinite running;
+                    img{
+                        width: 90px;
+                        height: 100px;
+                    }
+                    &:hover{
+                        animation-play-state: paused;
+                    }
+                }
+            }
+        }
+    }
+    .scroll-chat{
+        width: 100%;
+        height: 600vh;
+        position: relative;
+        background-color: #e5eaee;
+        .s-wrap{
+            width: calc(100% - 400px);
+            height: 100vh;
+            top: 80px;
+            left: 0px;
+            margin-left: 400px;
+            position: sticky;
+            padding: 0 200px 0 300px;
+            @include flex(flex-end,center){}
+            &:first-child{
+                left: 0;
+                width: 100%;
+                margin-left: 0;
+                .s-text-box{
+                    width: 50%;
+                }
+                .chat-box{
+                    width: 50%;
+                }
+            }
+            .s-text-box{
+                width: calc(50% - 200px);
+                height: 40%;
+                @include flex(space-around,flex-start){
+                    flex-direction: column;
+                }
+                h2{
+                    font-size: 48px;
+                    span{
+                        font-size: 48px;
+                        color: $mC;
+                    }
+                }
+                .end-hight{
+                    margin-top: 80px;
+                    animation: upDown 2s infinite running;
+                    img{
+                        width: 90px;
+                        height: 100px;
+                    }
+                    &:hover{
+                        animation-play-state: paused;
+                    }
+                }
+            }
+            .chat-box{
+                width: calc(50% + 200px);
+                height: 100%;
+                @include flex(center, center){}
+                .phone{
+                    width: 450px;
+                    height: 700px;
+                    background-size: cover;
+                    position: relative;
+                    overflow: hidden;
+                    img{
+                        position: absolute;
+                        width: 230px;
+                        left: 73px;
+                    }
+                    .imo{
+                        height: 125px;
+                        left: 78px;
+                        width: 150px;
+                        bottom: 520px;
+                    }
+                    .chat1{
+                        bottom: 430px;
+                        height: 72px;
+                    }
+                    .chat2{
+                        height: 83px;
+                        bottom: 320px;
+                    }
+                    .chat3{
+                        left: 95px;
+                        bottom: 200px;
+                        height: 85px;
+                    }
+                }
+            }
+        }
+    }
+    .list-link{
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-position: 50% 50%;
+        @include flex(center, flex-start){}
+        .link-wrap{
+            margin-top: 250px;
+            @include flex(space-between, center){
+                flex-direction: column;
+            }
+            h2{
+                margin-bottom: 50px;
+                font-size: 48px;
+            }
+            .list-btn{
+                img{
+                    width: 250px;
+                    height: 70px;
+                }
+            }
+        }
+    }
+}

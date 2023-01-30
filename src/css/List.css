@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Poppins:wght@400&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, a,
+img, ul, li, nav, video, figure {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+.list {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+.list .l-top {
+  width: 100%;
+  height: 200px;
+  background-color: #53A069;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.list .l-top .l-t-wrap {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.list .l-top .l-t-wrap input[type=text] {
+  width: 500px;
+  height: 50px;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  margin-right: 20px;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  outline: none;
+}
+.list .l-top .l-t-wrap input[type=text]::-moz-placeholder {
+  color: #777;
+}
+.list .l-top .l-t-wrap input[type=text]:-ms-input-placeholder {
+  color: #777;
+}
+.list .l-top .l-t-wrap input[type=text]::placeholder {
+  color: #777;
+}
+.list .l-top .l-t-wrap input[type=submit] {
+  width: 150px;
+  height: 50px;
+  border-radius: 25px;
+  border: none;
+  background-color: #fff;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 20px;
+  color: #53A069;
+  font-weight: bold;
+  cursor: pointer;
+}
+.list .l-bottom {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+.list .l-bottom .l-b-serch {
+  margin: 40px 0 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.list .l-bottom .l-b-serch h2 {
+  color: #2E483E;
+  margin: 50px 0;
+  font-size: 28px;
+}
+.list .l-bottom .l-b-serch .filter-box {
+  padding: 0 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.list .l-bottom .l-b-serch .filter-box h4 {
+  color: #919191;
+  font-weight: normal;
+}
+.list .l-bottom .l-b-serch .filter-box .minus {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.list .l-bottom .l-b-serch .filter-box .minus .hate {
+  z-index: 7;
+  padding: 10px 20px 10px 50px;
+  border-radius: 25px;
+  background-color: #F1F3F4;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  transition: 0.4s 0.3s;
+}
+.list .l-bottom .l-b-serch .filter-box .minus .hate.active {
+  transition: 0s 0s;
+  border-radius: 25px 25px 0 0;
+}
+.list .l-bottom .l-b-serch .filter-box .minus .hate.active img {
+  transform: rotateX(180deg);
+}
+.list .l-bottom .l-b-serch .filter-box .minus .hate.active ul {
+  transition: 0.4s;
+  height: 200px;
+}
+.list .l-bottom .l-b-serch .filter-box .minus .hate.active ul li {
+  padding: 10px 0;
+  display: block;
+  font-size: 16px;
+  border-bottom: 1px solid rgb(185, 185, 185);
+}
+.list .l-bottom .l-b-serch .filter-box .minus .hate img {
+  transition: 0.5s;
+  width: 18px;
+  height: 10px;
+  margin-left: 20px;
+}
+.list .l-bottom .l-b-serch .filter-box .minus .hate ul {
+  transition: 0.4s;
+  height: 0;
+  position: absolute;
+  left: 0;
+  top: 44px;
+  width: 100%;
+  padding: 0 15px;
+  border-radius: 0 0 15px 15px;
+  background-color: #F1F3F4;
+}
+.list .l-bottom .l-b-serch .filter-box .minus .hate ul li {
+  cursor: pointer;
+  display: none;
+  height: 25%;
+  font-size: 0;
+}
+.list .l-bottom .l-b-serch .filter-box .minus .hate ul li:last-child {
+  border: none;
+}
+.list .l-bottom .l-b-serch .filter-box .minus p {
+  margin-left: 10px;
+  color: #535353;
+}
+.list .l-bottom .l-b-content {
+  width: 100%;
+}/*# sourceMappingURL=List.css.map */
