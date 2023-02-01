@@ -1,4 +1,4 @@
-import './App.scss';
+
 import './css/common.scss';
 import {useState, useRef, useEffect} from 'react';
 import {Link,BrowserRouter,Route, Routes} from 'react-router-dom';
@@ -6,11 +6,13 @@ import {authService} from "./fbase";
 import Main from "./page/Main"
 import List from "./page/List"
 import Login from './page/Login';
+import Detail from './page/Detail';
 import Signup from './page/Signup';
 import Header from './component/Header';
 import Footer from './component/Footer';
 import Mypage from './page/Mypage';
 import {Myrecipe} from './component/Myrecipe';
+import Top from './component/Top';
 
 function App() {
 
@@ -19,12 +21,9 @@ function App() {
 
 
   
-  // api키를 대입하여 받아올 링크
-  // http://openapi.foodsafetykorea.go.kr/api/fb1bb5a1586a4caa8676/COOKRCP01/json/1/900
-
 
   /**api 링크*/
-  const tahl = "http://openapi.foodsafetykorea.go.kr/api/fb1bb5a1586a4caa8676/COOKRCP01/json/1/999";
+  const tahl = "https://openapi.foodsafetykorea.go.kr/api/fb1bb5a1586a4caa8676/COOKRCP01/json/1/999";
   
 
 
@@ -33,6 +32,7 @@ function App() {
       id = 고유번호 
       name = 요리이름 
       cook = 요리방법(끓이기,찌기...) 
+      
       mainImg = 메인 이미지 
       tan,dan,ji,na = 영양소
       yul = 열량(칼로리)
@@ -48,6 +48,8 @@ function App() {
     [serchTxt, serchChange] = useState([]),
     [num, setNum] = useState([]),
     elInput = useRef();
+
+
   const [init, setInit] = useState(false);  //초기화되지 않은 상태
   const [isLoggedIn, setIsLoggedIn] = useState(false); //로그인x=null //로그인 여부 판단
 
@@ -77,7 +79,7 @@ function App() {
         let rcp = recipe.COOKRCP01.row.map((obj,key)=>{
           return {
             id:key,
-            hashtag:obj.RCP_PARTS_DTLS.replace(/인분|재료|갈은것|다진것|개|적당량|소스|소스소개/g, "").replace(/로즈마리/g, "셰프리").replace(/마리/g, "").replace(/셰프리/g, "로즈마리").match(reg),
+            hashtag:obj.RCP_PARTS_DTLS.replace(/인분|두 가지 색|재료|갈은것|다진것|개|적당량|소스|소스소개/g, "").replace(/로즈마리/g, "셰프리").replace(/마리/g, "").replace(/셰프리/g, "로즈마리").match(reg),
             name:obj.RCP_NM, cook:obj.RCP_WAY2, mainImg:obj.ATT_FILE_NO_MAIN, tan:obj.INFO_CAR+"g", dan:obj.INFO_PRO+"g", ji:obj.INFO_FAT+"g", na:obj.INFO_NA+"mg",yul:obj.INFO_ENG, item:obj.RCP_PARTS_DTLS, v:obj.RCP_PAT2, make1:obj.MANUAL01, make2:obj.MANUAL02, make3:obj.MANUAL03, make4:obj.MANUAL04, make5:obj.MANUAL05, make6:obj.MANUAL06, make7:obj.MANUAL07, make8:obj.MANUAL08, 
             // make9:obj.MANUAL09, make10:obj.MANUAL10, make11:obj.MANUAL11, make12:obj.MANUAL12, make13:obj.MANUAL13, make14:obj.MANUAL14, make15:obj.MANUAL15, make16:obj.MANUAL16, make17:obj.MANUAL17, make18:obj.MANUAL18, make19:obj.MANUAL19, make20:obj.MANUAL20,
             makeImg1:obj.MANUAL_IMG01, makeImg2:obj.MANUAL_IMG02, makeImg3:obj.MANUAL_IMG03, makeImg4:obj.MANUAL_IMG04, makeImg5:obj.MANUAL_IMG05, makeImg6:obj.MANUAL_IMG06, makeImg7:obj.MANUAL_IMG07, makeImg8:obj.MANUAL_IMG08, 
@@ -111,24 +113,41 @@ function App() {
 
 
   return (
-    <div className="App">
-      <BrowserRouter>
-        {init ? <Header isLoggedIn={isLoggedIn}/> : "Initializing...."}
-        <main>
-        <Myrecipe.Provider value={{data:data, setData:setData,serchTxt:serchTxt, num:num, serch:serch, elInput:elInput}}>
+    <div className='cheflee'>
+      <div className='main-bg' style={{backgroundImage:'url(./img/mainbg.png)'}}/>
+      <div className='web-title'>
+        <h1>CHEF LEE</h1>
+        <p>*본 서비스는 모바일 환경에 최적화 되어 있습니다</p>
+      </div>
+      <div className="chef-app">
+        <BrowserRouter>
+          <div className='header-wraps'>
+            
+          <Header isLoggedIn={isLoggedIn}/>
+          </div>
+          <Top/>
+          <main>
+          <Myrecipe.Provider value={{data:data, setData:setData,serchTxt:serchTxt, num:num, serch:serch, elInput:elInput}}>
+            <Routes>
+              <Route exact path="/" element={<Main/>} />
+              <Route path="/list" element={<List/>} />
+              {
+                data.map((obj)=>{
+                  return <Route path={`/detail/${obj.name}`} element={<Detail data={obj}/>}/>
+                })
+              }
+              <Route path="/login" element={<Login/>} />
+              <Route path="/detail" element={<Detail/>} />
+              <Route path="/signup" element={<Signup/>} />
+              <Route path="/mypage" element={<Mypage/>} />
+            </Routes>
+              </Myrecipe.Provider>
+          </main>
           <Routes>
-            <Route exact path="/" element={<Main/>} />
-            <Route path="/page/list" element={<List/>} />
-            <Route path="/login" element={<Login/>} />
-            <Route path="/signup" element={<Signup/>} />
-            <Route path="/mypage" element={<Mypage/>} />
+            <Route path="/" element={<Footer/>} />
           </Routes>
-            </Myrecipe.Provider>
-        </main>
-        <Routes>
-          <Route path="/" element={<Footer/>} />
-        </Routes>
-      </BrowserRouter>
+        </BrowserRouter>
+    </div>
     </div>
   );
 }

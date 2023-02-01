@@ -1,13 +1,35 @@
-h4 {
+.my-wrap {
+  width: 100%;
+  background-color: #fff;
+}
+.my-wrap h4 {
   font-weight: 900;
   color: #2E483E;
   font-size: 25px;
-  margin: 50px 0px 0px 100px;
+  padding: 50px 0px 0px 100px;
 }
-
-.mypage-bar {
-  width: 90%;
+.my-wrap .mypage-bar {
+  width: calc(100% - 100px);
   height: 50px;
   background-color: #53A069;
-  margin: 30px auto;
+  margin: 0px auto;
+}
+.my-wrap form {
+  display: flex;
+  margin: 0px 50px;
+}
+.my-wrap form input {
+  border: none;
+  border-bottom: 1px solid rgb(33, 33, 33);
+}
+.my-wrap form input:nth-child(3) {
+  background-color: #232323;
+  border-bottom: none;
+  color: #fff;
+  font-size: 1.2rem;
+}
+.my-wrap .ingredients {
+  display: flex;
+  width: 400px;
+  justify-content: space-between;
 }/*# sourceMappingURL=Mypage.css.map */

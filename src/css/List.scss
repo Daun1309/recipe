@@ -37,6 +37,7 @@ $sC : #2E483E;
 
 
 .list{
+    box-shadow: 0 0 60px rgba(0,0,0,.2);
     position: relative;
     width: 100%;
     @include flex(){
@@ -54,7 +55,7 @@ $sC : #2E483E;
 
             }
             input[type=text]{
-                width: 500px;
+                width: 350px;
                 height: 50px;
                 border: none;
                 border-radius: 25px;
@@ -69,7 +70,7 @@ $sC : #2E483E;
                 }
             }
             input[type=submit]{
-                width: 150px;
+                width: 120px;
                 height: 50px;
                 border-radius: 25px;
                 border: none;
@@ -83,27 +84,31 @@ $sC : #2E483E;
         }
     }
     .l-bottom{
+        background-color: #fff;
+        // background-color: rgba(255,255,255,.7);
+        // backdrop-filter: blur(5px);
         width: 100%;
         @include flex(){
             flex-direction: column;
         }
         .l-b-serch{
-            margin: 40px 0 60px;
+            margin: 40px 0 90px;
             width: 100%;
             @include flex(center,center){
                 flex-direction: column;
             }
             h2{
                 color: $sC;
-                margin: 50px 0;
+                margin: 20px 0;
                 font-size: 28px;
 
             }
             .filter-box{
-                padding: 0 150px;
+                padding: 0 20px 0 0;
                 @include flex(space-between, center){}
                 width: 100%;
                 h4{
+                    font-size: 16px;
                     color: #919191;
                     font-weight: normal;
                 }

@@ -92,7 +92,6 @@ function Main() {
             </div>
             <div className='chat-box'>
               <div className='phone'>
-                <img className='imo' src='./img/imo.gif'/>
                 <img className='chat1' src='./img/chat1.png'/>
               </div>
             </div>
@@ -102,6 +101,7 @@ function Main() {
             </div>
             <div className='chat-box'>
               <div className='phone'>
+                <img className='imo' src='./img/imo.gif'/>
                 <img className='chat2' src='./img/chat2.png'/>
               </div>
             </div>

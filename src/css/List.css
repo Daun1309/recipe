@@ -25,6 +25,7 @@ ol, ul {
 }
 
 .list {
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.2);
   position: relative;
   width: 100%;
   display: flex;
@@ -46,7 +47,7 @@ ol, ul {
   align-items: center;
 }
 .list .l-top .l-t-wrap input[type=text] {
-  width: 500px;
+  width: 350px;
   height: 50px;
   border: none;
   border-radius: 25px;
@@ -67,7 +68,7 @@ ol, ul {
   color: #777;
 }
 .list .l-top .l-t-wrap input[type=submit] {
-  width: 150px;
+  width: 120px;
   height: 50px;
   border-radius: 25px;
   border: none;
@@ -79,6 +80,7 @@ ol, ul {
   cursor: pointer;
 }
 .list .l-bottom {
+  background-color: #fff;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -86,7 +88,7 @@ ol, ul {
   flex-direction: column;
 }
 .list .l-bottom .l-b-serch {
-  margin: 40px 0 60px;
+  margin: 40px 0 90px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -95,17 +97,18 @@ ol, ul {
 }
 .list .l-bottom .l-b-serch h2 {
   color: #2E483E;
-  margin: 50px 0;
+  margin: 20px 0;
   font-size: 28px;
 }
 .list .l-bottom .l-b-serch .filter-box {
-  padding: 0 150px;
+  padding: 0 20px 0 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
 .list .l-bottom .l-b-serch .filter-box h4 {
+  font-size: 16px;
   color: #919191;
   font-weight: normal;
 }

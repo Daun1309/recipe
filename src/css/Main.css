@@ -52,6 +52,7 @@
 }
 
 .m-wrap {
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -67,18 +68,21 @@
   background-position: 50% 50%;
 }
 .m-wrap .main-title img {
-  height: 230px;
+  height: 170px;
   width: 500px;
 }
 .m-wrap .main-app {
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
 }
 .m-wrap .main-app .a-wrap {
   width: 100%;
   height: 100%;
-  padding: 0 200px;
+  padding: 0 70px 0 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -90,8 +94,8 @@
 }
 .m-wrap .main-app .a-wrap .a-img-wrap .app-box {
   position: absolute;
-  width: 300px;
-  height: 600px;
+  width: 200px;
+  height: 450px;
   border-radius: 16px;
   box-shadow: 0 0 56px rgba(0, 0, 0, 0.3);
   background: #fff;
@@ -115,22 +119,23 @@
 }
 .m-wrap .main-app .a-wrap .a-text-box {
   width: 50%;
-  height: 40%;
-  padding-right: 100px;
+  height: 100%;
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
   flex-direction: column;
 }
 .m-wrap .main-app .a-wrap .a-text-box h2 {
-  font-size: 48px;
+  padding-top: 400px;
+  font-size: 32px;
 }
 .m-wrap .main-app .a-wrap .a-text-box h2 span {
-  font-size: 48px;
+  font-size: 32px;
   color: #53A069;
 }
 .m-wrap .main-app .a-wrap .a-text-box .end-hight {
   margin-top: 80px;
+  cursor: pointer;
   -webkit-animation: upDown 2s infinite running;
           animation: upDown 2s infinite running;
 }
@@ -146,17 +151,19 @@
   width: 100%;
   height: 600vh;
   position: relative;
-  background-color: #e5eaee;
+  background-color: rgba(174, 177, 180, 0.7);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
 }
 .m-wrap .scroll-chat .s-wrap {
-  width: calc(100% - 400px);
+  width: calc(100% - 300px);
   height: 100vh;
-  top: 80px;
+  top: 100px;
   left: 0px;
   margin-left: 400px;
   position: -webkit-sticky;
   position: sticky;
-  padding: 0 200px 0 300px;
+  padding: 0 20px 0 50px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -173,7 +180,7 @@
   width: 50%;
 }
 .m-wrap .scroll-chat .s-wrap .s-text-box {
-  width: calc(50% - 200px);
+  width: calc(50% - 150px);
   height: 40%;
   display: flex;
   justify-content: space-around;
@@ -181,13 +188,14 @@
   flex-direction: column;
 }
 .m-wrap .scroll-chat .s-wrap .s-text-box h2 {
-  font-size: 48px;
+  font-size: 32px;
 }
 .m-wrap .scroll-chat .s-wrap .s-text-box h2 span {
-  font-size: 48px;
+  font-size: 32px;
   color: #53A069;
 }
 .m-wrap .scroll-chat .s-wrap .s-text-box .end-hight {
+  cursor: pointer;
   margin-top: 80px;
   -webkit-animation: upDown 2s infinite running;
           animation: upDown 2s infinite running;
@@ -201,42 +209,41 @@
           animation-play-state: paused;
 }
 .m-wrap .scroll-chat .s-wrap .chat-box {
-  width: calc(50% + 200px);
+  width: calc(50% + 150px);
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .m-wrap .scroll-chat .s-wrap .chat-box .phone {
-  width: 450px;
-  height: 700px;
+  width: 350px;
+  height: 600px;
   background-size: cover;
   position: relative;
-  overflow: hidden;
 }
 .m-wrap .scroll-chat .s-wrap .chat-box .phone img {
   position: absolute;
-  width: 230px;
-  left: 73px;
+  width: 190px;
+  left: -27px;
 }
 .m-wrap .scroll-chat .s-wrap .chat-box .phone .imo {
-  height: 125px;
-  left: 78px;
-  width: 150px;
-  bottom: 520px;
+  height: 120px;
+  left: -28px;
+  width: 135px;
+  bottom: 260px;
 }
 .m-wrap .scroll-chat .s-wrap .chat-box .phone .chat1 {
-  bottom: 430px;
-  height: 72px;
+  bottom: 470px;
+  height: 64px;
 }
 .m-wrap .scroll-chat .s-wrap .chat-box .phone .chat2 {
-  height: 83px;
-  bottom: 320px;
+  bottom: 390px;
+  height: 70px;
 }
 .m-wrap .scroll-chat .s-wrap .chat-box .phone .chat3 {
-  left: 95px;
-  bottom: 200px;
-  height: 85px;
+  left: -17px;
+  bottom: 170px;
+  height: 75px;
 }
 .m-wrap .list-link {
   width: 100%;

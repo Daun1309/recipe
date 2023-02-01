@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import "../css/Login.css"
 import "../css/common.css"
 import Footer from '../component/Footer'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup } from 'firebase/auth';
 
 //회원가입후 메인페이지로 이동하기 !
@@ -43,10 +43,10 @@ const Signup = () => {
         
         <div className='header-empty-box'/>
             <div className='login-wrap'>
+                <div className='login-component'>
                 <div className='chef-lee-background'>
                     <img src='https://ifh.cc/g/R9Hdfr.png'/>
                 </div>
-                <div className='login-component'>
                     <h4>회원가입</h4>
                     <form onSubmit={onSubmit}>
                         <input 

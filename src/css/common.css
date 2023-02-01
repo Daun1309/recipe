@@ -11,7 +11,7 @@ img, ul, li, nav, video, figure {
   border: 0;
 }
 
-body {
+* {
   font-family: "Poppins", sans-serif;
 }
 
@@ -25,16 +25,48 @@ ol, ul {
 }
 
 ::-webkit-scrollbar {
-  width: 15px;
+  display: none;
 }
 
-::-webkit-scrollbar-track {
-  background-color: rgba(83, 160, 105, 0.3);
+.cheflee {
+  width: 100%;
+  background-size: cover;
+  background-position: 10% 50%;
+  position: relative;
 }
-
-::-webkit-scrollbar-thumb {
-  background-color: #53A069;
-  border-radius: 4px;
+.cheflee .main-bg {
+  position: fixed;
+  width: 85%;
+  height: 110%;
+  background-size: cover;
+  background-position: 50% 50%;
+  left: -7%;
+  bottom: 0;
+}
+.cheflee .web-title {
+  position: fixed;
+  bottom: 18%;
+  left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.cheflee .web-title h1 {
+  font-size: calc(2vw + 60px);
+  font-weight: bold;
+}
+.cheflee .web-title p {
+  font-size: calc(0.6vw + 12px);
+  font-weight: bold;
+  color: #5e5c5c;
+}
+.cheflee .chef-app {
+  width: 800px;
+  height: 100vh;
+  top: 0;
+  left: calc(85% - 700px);
+  position: relative;
 }
 
 .header-empty-box {
@@ -42,23 +74,23 @@ ol, ul {
   height: 80px;
 }
 
-div.header {
-  width: 100%;
+.header {
+  width: 800px;
   height: 80px;
   background-color: rgb(255, 255, 255);
   filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.2));
   position: fixed;
   top: 0;
-  left: 0;
+  left: calc(85% - 700px);
   z-index: 99;
 }
-div.header .logo-img {
+.header .logo-img {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-div.header .logo-img img {
+.header .logo-img img {
   width: 90px;
   height: auto;
   -o-object-fit: cover;
@@ -66,14 +98,14 @@ div.header .logo-img img {
   background-size: cover;
   background-repeat: no-repeat;
 }
-div.header .header-menu {
+.header .header-menu {
   display: flex;
   font-weight: bolder;
   color: #2E483E;
   justify-content: flex-end;
   margin-right: 70px;
 }
-div.header .header-menu a {
+.header .header-menu a {
   padding: 30px;
 }
 
@@ -104,4 +136,18 @@ div.footer .footer-t {
   font-size: 15px;
   color: rgb(85, 85, 85);
   margin-right: 100px;
+}
+
+button.topBtn {
+  position: fixed;
+  z-index: 999;
+  bottom: 3%;
+  right: 10%;
+  transform: translate(-50%, -50%);
+  border: none;
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  background-color: rgb(32, 81, 44);
+  font-size: 2rem;
 }/*# sourceMappingURL=common.css.map */

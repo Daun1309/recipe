@@ -1,19 +1,29 @@
 
-div.chef-lee-background{
-    width: 90%;
-    margin: 150px auto;
-    img{
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
-}
+
 
 .login-wrap{
-    height: calc(100vh - 380px);
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    // background-color: rgba(255,255,255,.2);
+    // backdrop-filter: blur(5px);
+    height: calc(100vh - 230px);
+    div.chef-lee-background{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 20px;
+        width: 140%;
+        img{
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    }
     div.login-component{
+        margin-top: 80px;
         display: flex;
         flex-direction: column;
         position: absolute;

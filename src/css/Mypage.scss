@@ -1,13 +1,40 @@
-
-h4{
-    font-weight: 900;
-    color: #2E483E;
-    font-size: 25px;
-    margin: 50px 0px 0px 100px
-}
-.mypage-bar{
-    width: 90%;
-    height: 50px;
-    background-color: #53A069;
-    margin: 30px auto;
+.my-wrap{
+    width: 100%;
+    // height: calc(100vh - 230px);
+    background-color: #fff;
+    h4{
+        font-weight: 900;
+        color: #2E483E;
+        font-size: 25px;
+        padding: 50px 0px 0px 100px
+    }
+    .mypage-bar{
+        width: calc(100% - 100px);
+        height: 50px;
+        background-color: #53A069;
+        margin: 0px auto;
+    }
+    
+    form{
+        display: flex;
+        margin: 0px 50px;
+        input{
+            border: none;
+            border-bottom: 1px solid rgb(33, 33, 33);
+            &:nth-child(3){
+                background-color: #232323;
+                border-bottom: none;
+                color: #fff;
+                font-size: 1.2rem;
+                
+            }
+        }
+    }
+    .ingredients{
+        display: flex;
+        width: 400px;
+        justify-content: space-between;
+        
+    }
+    
 }

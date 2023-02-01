@@ -51,10 +51,10 @@ const Login = () => {
         <>
         <div className='header-empty-box'/>
         <div className='login-wrap'>
+            <div className='login-component'>
             <div className='chef-lee-background'>
                 <img src='https://ifh.cc/g/R9Hdfr.png'/>
             </div>
-            <div className='login-component'>
                 <h4>로그인</h4>
                 <form onSubmit={onSubmit}>
                     <input 

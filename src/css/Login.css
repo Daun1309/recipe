@@ -1,8 +1,17 @@
-div.chef-lee-background {
-  width: 90%;
-  margin: 150px auto;
+.login-wrap {
+  width: 100%;
+  position: relative;
+  background-color: #fff;
+  height: calc(100vh - 230px);
 }
-div.chef-lee-background img {
+.login-wrap div.chef-lee-background {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20px;
+  width: 140%;
+}
+.login-wrap div.chef-lee-background img {
   width: 100%;
   height: auto;
   -o-object-fit: cover;
@@ -10,11 +19,8 @@ div.chef-lee-background img {
   background-size: cover;
   background-repeat: no-repeat;
 }
-
-.login-wrap {
-  height: calc(100vh - 380px);
-}
 .login-wrap div.login-component {
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
   position: absolute;

@@ -46,6 +46,7 @@ $sC : #2E483E;
 
 
 .m-wrap{
+    box-shadow: 0 0 60px rgba(0,0,0,.4);
     @include flex(){
         flex-direction: column;
     }
@@ -56,7 +57,7 @@ $sC : #2E483E;
         background-size: cover;
         background-position: 50% 50%;
         img{
-            height: 230px;
+            height: 170px;
             width: 500px;
         }
     }
@@ -64,19 +65,22 @@ $sC : #2E483E;
         width: 100%;
         height: 100vh;
         overflow: hidden;
+        // background-color: #fff;
+        background-color: rgba(255,255,255,.5);
+        backdrop-filter: blur(5px);
         .a-wrap{
             width: 100%;
             height: 100%;
-            padding: 0 200px;
-            @include flex(space-between){}
+            padding: 0 70px 0 40px;
+            @include flex(space-between, center){}
             .a-img-wrap{
                 width: 50%;
                 height: 100%;
                 position: relative;
                 .app-box{
                     position: absolute;
-                    width: 300px;
-                    height: 600px;
+                    width: 200px;
+                    height: 450px;
                     border-radius: 16px;
                     box-shadow: 0 0 56px rgba(0,0,0,.3);
                     background: #fff;
@@ -101,20 +105,21 @@ $sC : #2E483E;
             }
             .a-text-box{
                 width: 50%;
-                height: 40%;
-                padding-right: 100px;
+                height: 100%;
                 @include flex(space-around,flex-end){
                     flex-direction: column;
                 }
                 h2{
-                    font-size: 48px;
+                    padding-top: 400px;
+                    font-size: 32px;
                     span{
-                        font-size: 48px;
+                        font-size: 32px;
                         color: $mC;
                     }
                 }
                 .end-hight{
                     margin-top: 80px;
+                    cursor: pointer;
                     animation: upDown 2s infinite running;
                     img{
                         width: 90px;
@@ -131,15 +136,17 @@ $sC : #2E483E;
         width: 100%;
         height: 600vh;
         position: relative;
-        background-color: #e5eaee;
+        // background-color: #e5eaee;
+        background-color: rgba(174, 177, 180, 0.7);
+        backdrop-filter: blur(5px);
         .s-wrap{
-            width: calc(100% - 400px);
+            width: calc(100% - 300px);
             height: 100vh;
-            top: 80px;
+            top: 100px;
             left: 0px;
             margin-left: 400px;
             position: sticky;
-            padding: 0 200px 0 300px;
+            padding: 0 20px 0 50px;
             @include flex(flex-end,center){}
             &:first-child{
                 left: 0;
@@ -153,19 +160,20 @@ $sC : #2E483E;
                 }
             }
             .s-text-box{
-                width: calc(50% - 200px);
+                width: calc(50% - 150px);
                 height: 40%;
                 @include flex(space-around,flex-start){
                     flex-direction: column;
                 }
                 h2{
-                    font-size: 48px;
+                    font-size: 32px;
                     span{
-                        font-size: 48px;
+                        font-size: 32px;
                         color: $mC;
                     }
                 }
                 .end-hight{
+                    cursor: pointer;
                     margin-top: 80px;
                     animation: upDown 2s infinite running;
                     img{
@@ -178,38 +186,37 @@ $sC : #2E483E;
                 }
             }
             .chat-box{
-                width: calc(50% + 200px);
+                width: calc(50% + 150px);
                 height: 100%;
                 @include flex(center, center){}
                 .phone{
-                    width: 450px;
-                    height: 700px;
+                    width: 350px;
+                    height: 600px;
                     background-size: cover;
                     position: relative;
-                    overflow: hidden;
                     img{
                         position: absolute;
-                        width: 230px;
-                        left: 73px;
+                        width: 190px;
+                        left: -27px;
                     }
                     .imo{
-                        height: 125px;
-                        left: 78px;
-                        width: 150px;
-                        bottom: 520px;
+                        height: 120px;
+                        left: -28px;
+                        width: 135px;
+                        bottom: 260px
                     }
                     .chat1{
-                        bottom: 430px;
-                        height: 72px;
+                        bottom: 470px;
+                        height: 64px;
                     }
                     .chat2{
-                        height: 83px;
-                        bottom: 320px;
+                        bottom: 390px;
+                        height: 70px;
                     }
                     .chat3{
-                        left: 95px;
-                        bottom: 200px;
-                        height: 85px;
+                        left: -17px;
+                        bottom: 170px;
+                        height: 75px;
                     }
                 }
             }
