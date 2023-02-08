@@ -1,23 +1,154 @@
-import React from 'react';
+import React,{useContext, useEffect, useState} from 'react';
 import Footer from '../component/Footer';
-// import {useParams} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import '../css/common.scss';
-//import '../css/Detail.scss';
+import '../css/Detail.scss';
+import {Myrecipe} from '../component/Myrecipe';
+import { addDoc, collection,doc,deleteDoc, getDocs, query, onSnapshot, orderBy} from "firebase/firestore";
+import { dbService } from '../fbase';
 
-function Detail({data}) {
+function Detail({ data, userObj }) {
 
-  // let {recipe} = useParams();
+  const { pathname } = useLocation();
+  const [click,setClick] = useState(false);
+  const [like,setLike] = useState([]);
+  const {serchTxt} = useContext(Myrecipe);
+
+  //console.log(userObj)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  
+  const onClickLike = async () => {
+    setClick(true);
+    const docRef = await addDoc(collection(dbService, "like"), {
+      data : data.id,
+      createdAt: Date.now(),
+      creatorId: userObj.uid,
+    });
+    console.log("Document written with ID: ",docRef.id);
+  }
+
+
+  useEffect(() => {
+    const q = query(
+      collection(dbService, "like"),
+      orderBy("createdAt", "desc")
+    );
+    onSnapshot(q, (snapshot) => {
+      const likeArr = snapshot.docs.map((document) => ({
+        id: document.id,
+        ...document.data(),
+      }));
+      setLike(likeArr);
+    });
+  }, []);
+
+  const onClickLikeD = async (e) => {
+    setClick(false);
+    const I = like.filter(like => like.data === data.id) 
+    if(I){
+      await deleteDoc(doc(dbService, "like", `${I[0].id}`) );
+    }
+  }
+
+  
 
   return (
     <>
       <div className='header-empty-box'/>
 
       <div className='detail'>
-        <h1>
-            {data.name}
-          </h1>
-      </div>
+        <div className='detail-top'>
+          <Link to='../list' className='back-btn'><img src='https://ifh.cc/g/wCvHr6.png'/></Link>
+          <h1>{data.name}</h1>
+
+          {click ? 
+            <div className="like-btn" onClick={(e)=>{
+              onClickLikeD();
+              e.target.classList.toggle('is-active');
+            }}/>
+          :
+            <div className="like-btn" onClick={(e)=>{
+              onClickLike();
+              e.target.classList.toggle('is-active');
+            }}/>
+          }
+          
+        </div>
+        <div className='detail-bottom'>
+          <div className='main-recp' style={{backgroundImage:`url(${data.mainImg})`}}/>
+          <div className='nutrient'>
+            <h2>✍️ 영양정보</h2>
+            <div className='n-contain'>
+              <div className='d-circle light'>
+                <h3>{data.tan}</h3>
+                <h4>탄수화물</h4>
+              </div>
+              <div className='d-circle deep'>
+                <h3>{data.dan}</h3>
+                <h4>단백질</h4>
+              </div>
+              <div className='d-circle light'>
+                <h3>{data.ji}</h3>
+                <h4>지방</h4>
+              </div>
+              <div className='d-circle deep'>
+                {data.na.length > 4
+                  ? <h3 className='fz20'>{data.na}</h3>
+                  : <h3>{data.na}</h3>
+                  }
+                <h4>나트륨</h4>
+              </div>
+            </div>
+          </div>
+          <div className='ingredient'>
+            <h2>✍️ 재료</h2>
+            {data.hashtag.length > 24 
+            ? <nav className='h255'>
+              {
+                data.hashtag.map((obj, key)=>
+                <p>{key+1}. {obj}</p>
+                )
+              }
+            </nav> 
+            : <nav className='h170'>
+              {
+                data.hashtag.map((obj, key)=>
+                <p>{key+1}. {obj}</p>
+                )
+              }
+            </nav>}
+          </div>
+          <div className='make-recp'>
+            <h2>✍️ 만드는 법</h2>
+            <nav>
+              {
+                data.make.map((obj, key)=>
+                obj === "" 
+                  ? <div className='none-block'/>
+                  : <div className='m-r-wrap'>
+                      <div className='m-r-img' style={{backgroundImage:`url(${data.makeImg[key]})`}}/>
+                      <h4>0{key+1}</h4>
+                      <p>{obj}</p>
+                    </div>
+                )
+              }
+            </nav>
+          </div>
+          <div className='link-box'>
+            <div className='l-box-wrap'>
+              <img src='https://ifh.cc/g/lLjTFW.png'/>
+              <a href={`https://www.youtube.com/results?search_query=${data.name}+만드는+법`} target='_blank'>관련 영상 보러가기</a>
+            </div>
+            <div className='l-box-wrap'>
+              <img src='https://ifh.cc/g/NKThC4.png'/>
+              <a href={`https://www.coupang.com/np/search?component=&q=${serchTxt}&channel=user`} target='_blank'>검색 재료 장 보러가기</a>
+            </div>
+          </div> 
+        </div>
       <Footer/>
+      </div>
     </>
   )
 }

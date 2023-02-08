@@ -4,7 +4,7 @@ import "../css/common.css"
 import Footer from "../component/Footer"
 import { authService } from '../fbase';
 import { Link, useNavigate } from 'react-router-dom';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup } from 'firebase/auth';
 
 //로그인 성공시 메인 화면으로 이동
 const Login = () => {

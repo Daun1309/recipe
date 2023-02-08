@@ -1,46 +1,78 @@
-import React, { useState, useEffect } from 'react';
-import "../css/Mypage.css";
+import React, { useContext, useState, useEffect } from 'react';
+import "../css/Mypage.scss";
 import "../css/common.scss"
 import { dbService } from '../fbase';
-import { addDoc, collection, getDocs, query} from "firebase/firestore";
+import { addDoc, collection, query, onSnapshot, orderBy} from "firebase/firestore";
+import { Link } from 'react-router-dom';
 import Footer from '../component/Footer';
-import Top from '../component/Top';
+import Ingredients from '../component/Ingredients';
+import Like from '../component/Like';
+import {Myrecipe} from '../component/Myrecipe';
 
 
-const Mypage = () => {
+const Mypage = ({ userObj }) => {
 
+  const {data} = useContext(Myrecipe);
   const [ingredients,setIngredients] = useState("");
   const [date,setDate] = useState("");
   const [ingredientsG,setIngredientsG] = useState([]);
+  const [like,setLike] = useState([]);
+  const val = [];
 
-  const getIngredients = async () => {
-    const dbIngredients = query(collection(dbService, "ingredientsG"));
-    const querySnapshot = await getDocs(dbIngredients);
+  const likeData = like.map((like)=>{    
+    if(like.creatorId == userObj.uid){
+      return like.data 
+    }
+  });   
 
-    querySnapshot.forEach((doc) => {
-      const ingredientsObj = {
-        ...doc.data(),
-        id: doc.id,
-      } 
-      console.log(doc.data())
-      setIngredientsG((prev) => [ingredientsObj, ...prev]);
-    }); 
-  };
-    
+  data.filter((obj)=>{
+    return likeData.map((obj1)=> {
+        if(obj.id === obj1){
+            val.push(obj);
+        }
+    })
+  })
+
+  //재료 R
   useEffect(() => {
-    getIngredients();
+    const q = query(
+      collection(dbService, "ingredientsG"),
+      orderBy("createdAt", "desc")
+    );
+    onSnapshot(q, (snapshot) => {
+      const ingredientsArr = snapshot.docs.map((document) => ({
+        id: document.id,
+        ...document.data(),
+      }));
+      setIngredientsG(ingredientsArr);
+    });
   }, []);
-    
-  console.log(ingredientsG);
 
+
+  //좋아요 R
+  useEffect(() => {
+    const p = query( 
+        collection(dbService, "like"),
+        orderBy("createdAt", "desc")
+    );
+    onSnapshot(p, (snapshot) => {
+    const likeArr = snapshot.docs.map((document) => ({
+        id: document.id,
+        ...document.data(),
+    }));
+    setLike(likeArr);
+  });
+  }, []);
+
+  //재료저장 C
   const onSubmit = async (e) => {
     e.preventDefault();
     const docRef = await addDoc(collection(dbService, "ingredientsG"), {
       ingredients : ingredients,
       date: date,
       createdAt: Date.now(),
+      creatorId: userObj.uid,
     });
-    console.log("Document written with ID: ",docRef.id);
     setIngredients("");
   };
 
@@ -54,35 +86,60 @@ const Mypage = () => {
   
   return (
     <>
-    <div className='header-empty-box'/>
-    <div className='my-wrap'>
+      <div className='header-empty-box'/>
+      <div className='my-wrap'>
         <h4>Mypage</h4>
-        <div className='mypage-bar'></div>
-          <p>❤️한 레시피가 없습니다</p>
-        <div className='mypage-bar'></div>
-          <form onSubmit={onSubmit}>
-            <div>
-              <p>재료</p>
-              <input value={ingredients} onChange={onChange} type="text" placeholder="재료" maxLength={30}/>
+
+        <div className='mypage-bar'>
+          <img src='https://ifh.cc/g/mJxoqp.png'/>
+        </div>
+
+        {
+          like.length == 0 
+          ? 
+            <div className='like-list-n'>
+                <p>찜한 레시피가 없습니다</p>
+                <Link to="../list">레시피 추가하러 가기</Link>
             </div>
-            <div>
-              <p>유통기한</p>
-              <input type="date" onChange={onChangeD}/>
-            </div>
-            <input type="submit" value="저장"/>
-          </form>
-        <div>
-        {ingredientsG.map((ingredients) => (
-          <div key={ingredients.id} className="ingredients">
-            <p>{ingredients.ingredients}</p>
-            <p>{ingredients.date}</p>
-            <button>삭제</button>
+          :
+            <>
+              <Like val={val}/>
+            </>
+        }
+
+        <div className='mypage-bar'>
+          <img className='img2' src='https://ifh.cc/g/RGFbrV.png'/>
+        </div>
+
+        <form onSubmit={onSubmit}>
+          <div className='input'>
+            <p>재료</p>
+            <input value={ingredients} onChange={onChange} type="text" placeholder="재료" maxLength={30}/>
           </div>
-        ))}
+          <div className='input'>
+            <p>유통기한</p>
+            <input type="date" onChange={onChangeD}/>
+          </div>
+          <input type="submit" value="저장"/>
+        </form>
+
+        <div>
+          {
+            ingredientsG.length == 0 
+            ? 
+              <p className="ingredients-list-n">
+                냉장고가 비었습니다
+              </p>
+            :
+            <>
+              {ingredientsG.map((ingredients) => (
+                <Ingredients key={ingredients.id} ingredientsObj={ingredients} isOwner={ingredients.creatorId == userObj.uid}/>
+              ))}
+            </>
+          }
+        </div>
       </div>
-    {/* <Top/> */}
-    </div>
-    <Footer/>
+      <Footer/>
     </>
   )
 }

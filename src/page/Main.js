@@ -1,51 +1,55 @@
-import React from 'react'
+import React,{useEffect, useContext} from 'react'
 import '../css/common.scss';
 import '../css/Main.scss';
 import { Link } from 'react-scroll';
 import Listmove from '../component/Listmove';
+import { useLocation } from "react-router-dom";
+import {Myrecipe} from '../component/Myrecipe';
 
 
 function Main() {
-
-
-  const scrollElements = document.querySelectorAll(".scrolls");
-  const elementInView = (el) => {   
-    const elementTop = el.getBoundingClientRect().top+800;
-    return (
-      elementTop <= (window.innerHeight || document.documentElement.clientHeight) / 1
-    );
-  };
-  const elementOutofView = (el) => {
-    const elementTop = el.getBoundingClientRect().top+800;
-    return (
-      elementTop > (window.innerHeight || document.documentElement.clientHeight)
-    );
-  };
-  const hideScrollElement = (select) => {
-    select.classList.remove("scrolled");
-  };
-  const displayScrollElement = (select) => {
-    select.classList.add("scrolled");
-  };
-
   
-  const handleScrollAnimation = () => {
-    scrollElements.forEach((obj) => {
-      if (elementInView(obj, 1.25)) {
-        displayScrollElement(obj);
-      } else if (elementOutofView(obj)) {
-        hideScrollElement(obj)
-      }
-    })
-  }
+  const { pathname } = useLocation();
+  const {setScroll} = useContext(Myrecipe);
 
-  window.addEventListener("scroll", () => { 
-    handleScrollAnimation();
-  });
+  useEffect(() => {
+    //main에서 list 이동 시 scrollTop 을 0으로 주어 검색에 용이 하게 셋팅
+    setScroll(0);
+    window.scrollTo(0, 0);
 
-
-
-
+    //스크롤 채팅 이벤트
+    const scrollElements = document.querySelectorAll(".scrolls");
+    const elementInView = (el) => {   
+      const elementTop = el.getBoundingClientRect().top+700;
+      return (
+        elementTop <= (window.innerHeight || document.documentElement.clientHeight) / 1
+      );
+    };
+    const elementOutofView = (el) => {
+      const elementTop = el.getBoundingClientRect().top+850;
+      return (
+        elementTop > (window.innerHeight || document.documentElement.clientHeight)
+      );
+    };
+    const hideScrollElement = (select) => {
+      select.classList.remove("scrolled");
+    };
+    const displayScrollElement = (select) => {
+      select.classList.add("scrolled");
+    };
+    const handleScrollAnimation = () => {
+      scrollElements.forEach((obj) => {
+        if (elementInView(obj, 1.25)) {
+          displayScrollElement(obj);
+        } else if (elementOutofView(obj)) {
+          hideScrollElement(obj)
+        }
+      })
+    }
+    window.addEventListener("scroll", () => { 
+      handleScrollAnimation();
+    });
+  }, [pathname]);
 
   return (
     <>
@@ -120,7 +124,9 @@ function Main() {
           <div className='s-wrap'>
           </div>
         </div>
-
+        { 
+        //Link태그가 곂치기 때문에 컨포넌트로 분리
+        }
         <Listmove/>
 
       </div>

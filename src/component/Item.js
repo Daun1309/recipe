@@ -1,18 +1,23 @@
-import React,{useContext, useState} from 'react'
+import React,{useContext} from 'react'
 import Detail from '../page/Detail';
 import '../css/Item.scss';
 import '../css/common.scss';
 import Footer from './Footer';
 import {Myrecipe} from './Myrecipe';
-import {Link, Route} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 function Item() {
+
+  
   
   const {data} = useContext(Myrecipe),
-    {serchTxt} = useContext(Myrecipe),
-    {num} = useContext(Myrecipe);
-    
-    console.log(num.length);
+    {num} = useContext(Myrecipe),
+    {setScroll} = useContext(Myrecipe);
+
+    const saveScroll = ()=>{
+      setScroll(window.scrollY);
+    }
+
   return (
     <>
       <div className='item-wrap'>
@@ -21,14 +26,15 @@ function Item() {
         ? <div className='empty-box'>
             <img src='https://ifh.cc/g/R9Hdfr.png'/>
           </div>
-        : num.map((obj)=>{
+        : (num[0] === 1000 ? <div className='empty-box'>
+        <img src='https://ifh.cc/g/R9Hdfr.png'/>
+      </div> : num.map((obj)=>{
             return <div className='recipe'>
               <div className='r-wrap'>
                 <div className='img-box'>
-                  <div className='like'>
-                    {/* <div className='like-img' style={{backgroundImage:`url(../img/like-empty.png)`}}></div> */}
+                  {/* <div className='like'>
                       <div className="like-btn" onClick={(e)=>e.target.classList.toggle('is-active')}/>
-                  </div>
+                  </div> */}
                   <div className='r-img' style={{backgroundImage:`url(${data[obj].mainImg})`}}/>
                 </div>
                 <div className='r-wrap-bottom'>
@@ -40,7 +46,7 @@ function Item() {
                       <span>#{data[obj].hashtag[2]}</span>
                     </div>
                   </div>
-                  <Link to={`../detail/${data[obj].name}`} className='item-btn'>
+                  <Link onClick={saveScroll} to={`../detail/${data[obj].name}`} className='item-btn'>
                     레시피 보러가기
                   </Link>
                 </div>
@@ -48,6 +54,7 @@ function Item() {
             </div>
             
         })
+        )
       }
       </div> 
       <Footer/>

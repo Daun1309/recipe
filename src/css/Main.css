@@ -60,7 +60,7 @@
 }
 .m-wrap .main-title {
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 200px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,9 +73,9 @@
 }
 .m-wrap .main-app {
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 200px);
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.2);
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
 }
@@ -120,6 +120,7 @@
 .m-wrap .main-app .a-wrap .a-text-box {
   width: 50%;
   height: 100%;
+  margin-bottom: 70px;
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
@@ -134,7 +135,7 @@
   color: #53A069;
 }
 .m-wrap .main-app .a-wrap .a-text-box .end-hight {
-  margin-top: 80px;
+  margin-top: 70px;
   cursor: pointer;
   -webkit-animation: upDown 2s infinite running;
           animation: upDown 2s infinite running;
@@ -149,16 +150,14 @@
 }
 .m-wrap .scroll-chat {
   width: 100%;
-  height: 600vh;
+  height: calc(600vh - 1200px);
   position: relative;
-  background-color: rgba(174, 177, 180, 0.7);
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
+  background-color: #e5eaee;
 }
 .m-wrap .scroll-chat .s-wrap {
   width: calc(100% - 300px);
-  height: 100vh;
-  top: 100px;
+  height: calc(100vh - 200px);
+  top: 200px;
   left: 0px;
   margin-left: 400px;
   position: -webkit-sticky;
@@ -247,7 +246,7 @@
 }
 .m-wrap .list-link {
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 200px);
   background-size: cover;
   background-position: 50% 50%;
   display: flex;
