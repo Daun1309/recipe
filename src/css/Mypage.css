@@ -1,6 +1,7 @@
 .my-wrap {
   width: 100%;
   background-color: #fff;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.4);
 }
 .my-wrap h4 {
   font-weight: 900;
@@ -24,7 +25,7 @@
 }
 .my-wrap form {
   display: flex;
-  margin: 20px 50px;
+  padding: 20px 50px 50px 50px;
 }
 .my-wrap form .input {
   margin-right: 20px;
@@ -128,9 +129,10 @@ div.recipe-box button {
   border-radius: 50px;
   margin-top: 10px;
 }
+
 form.U-input {
   display: flex;
-  margin: 0px 0px 0px 50px;
+  margin: 0px;
   align-items: flex-end;
 }
 form.U-input input {
@@ -179,7 +181,7 @@ div.ingredients-list button {
   font-size: 16px;
 }
 div.ingredients-list button:hover {
-  background-color: #53A069;
+  background-color: #2E483E;
   border: 10px;
   color: #fff;
 }/*# sourceMappingURL=Mypage.css.map */

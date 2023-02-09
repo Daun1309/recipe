@@ -92,9 +92,6 @@ ol, ul {
 .list .l-top .l-t-wrap input[type=text]::-moz-placeholder {
   color: #777;
 }
-.list .l-top .l-t-wrap input[type=text]:-ms-input-placeholder {
-  color: #777;
-}
 .list .l-top .l-t-wrap input[type=text]::placeholder {
   color: #777;
 }

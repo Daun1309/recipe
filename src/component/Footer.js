@@ -10,7 +10,7 @@ const Footer = () => {
         <div className='footer-t'>
             <p>email : neukhyojong@naver.com</p>
             <p>daun1309@gmail.com</p>
-            <p>github : https://github.com/tahl04</p>
+            {/* <p>github : https://github.com/tahl04</p> */}
         </div>
     </div>
   )

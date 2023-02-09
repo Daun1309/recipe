@@ -10,6 +10,12 @@ const Like = ({val}) => {
     return (
         <div className='recipe-wrap'>  
             {
+                val.length == 0 ?
+                <div className='like-list-n'>
+                    <p>찜한 레시피가 없습니다</p>
+                    <Link to="../list">레시피 추가하러 가기</Link>
+                </div>
+                :
                 val.map((obj)=>{
                     return(
                         <div className='recipe-box'>

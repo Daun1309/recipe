@@ -3,7 +3,7 @@ import '../css/common.scss';
 import '../css/List.scss';
 import Item from "../component/Item"
 import {Myrecipe} from '../component/Myrecipe';
-
+import Top from "../component/Top";
 import {useLocation} from 'react-router-dom';
 
 function List() {
@@ -20,19 +20,15 @@ function List() {
 
     
   const { pathname } = useLocation();
+  const { state } = useLocation();
+
+  console.log(state);
   
   useEffect(() => {
     window.scrollTo(0, remScroll);
   }, [pathname]);
 
-    
-
-  
-  
-
   return (
-      
-
     <>
       <div className='header-empty-box'/>
       <div className='list'>
@@ -44,7 +40,7 @@ function List() {
           <img className='food-icon' src='https://ifh.cc/g/7NCy0s.png'/>
           <div className='l-t-wrap'>
             <form onSubmit={serch}>
-              <input ref={elInput} type="text" name="w" placeholder='재료를 입력해주세요.'/>
+              <input ref={elInput} defaultValue={state} type="text" name="w" placeholder='재료를 입력해주세요.'/>
               <input className='btn1' type="submit" value="search"></input>
             </form>
           </div>
@@ -80,6 +76,7 @@ function List() {
             <Item num={num} data={data} serchTxt={serchTxt}></Item>
           </div>
         </div>
+        <Top/>
       </div>
       
       {/* <Footer/> */}

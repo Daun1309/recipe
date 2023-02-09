@@ -181,9 +181,9 @@ function App() {
                   return <Route path={`/detail/${obj.name}`} element={<Detail data={obj} userObj={userObj}/>}/>
                 })
               }
-              <Route path="/login" element={<Login/>} />
               <Route path="/detail" element={<Detail/>} />
-              <Route path="/signup" element={<Signup/>} />
+              <Route path="/login" element={<Login isLoggedIn={isLoggedIn}/>} />
+              <Route path="/signup" element={<Signup isLoggedIn={isLoggedIn}/>} />
               <Route path="/mypage" element={<Mypage userObj={userObj}/>} />
             </Routes>
               </Myrecipe.Provider>

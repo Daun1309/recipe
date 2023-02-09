@@ -84,6 +84,10 @@ const Mypage = ({ userObj }) => {
     setDate(event.target.value)
   } 
   
+
+
+
+
   return (
     <>
       <div className='header-empty-box'/>
@@ -94,19 +98,8 @@ const Mypage = ({ userObj }) => {
           <img src='https://ifh.cc/g/mJxoqp.png'/>
         </div>
 
-        {
-          like.length == 0 
-          ? 
-            <div className='like-list-n'>
-                <p>찜한 레시피가 없습니다</p>
-                <Link to="../list">레시피 추가하러 가기</Link>
-            </div>
-          :
-            <>
-              <Like val={val}/>
-            </>
-        }
-
+        <Like val={val}/>
+         
         <div className='mypage-bar'>
           <img className='img2' src='https://ifh.cc/g/RGFbrV.png'/>
         </div>

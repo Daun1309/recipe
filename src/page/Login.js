@@ -28,13 +28,12 @@ const Login = () => {
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
-            let data
-            const auth = getAuth()
-            //로그인
+            let data;
+            const auth = getAuth();
             data = await signInWithEmailAndPassword(auth, email, password);
-            console.log (data);
+            navigate('/');
         } catch(error) {
-            setError(error.message)
+            setError(" * 아이디 혹은 비밀번호가 일치하지 않습니다")
         }
     }
 
@@ -43,7 +42,6 @@ const Login = () => {
         let provider;
         provider = new GoogleAuthProvider();
         const data = await signInWithPopup(authService, provider);
-        console.log(data)
         navigate('/');
     };
 
@@ -80,8 +78,7 @@ const Login = () => {
                     />
                     <Link to="/signup"> <b> 회원가입 </b> </Link>
                 </form>
-                {error}
-
+                <p style={{color:"red", fontSize:"15px"}}>{error}</p>
                 <div className='google-login-btn'>
                     <button onClick={onSocialClick}>
                         <img src='https://ifh.cc/g/31gQNd.png'/>
@@ -90,7 +87,7 @@ const Login = () => {
                 </div>
             </div>
         </div>
-                <Footer/>
+        <Footer/>
         </>
     )
 }

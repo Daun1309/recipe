@@ -1,23 +1,18 @@
 import React, { useState, useContext } from 'react'
 import { dbService } from '../fbase';
 import { doc,deleteDoc, updateDoc} from "firebase/firestore"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {Myrecipe} from './Myrecipe';
 import "../css/Mypage.scss"
 
 const Ingredients = ({ ingredientsObj, isOwner }) => {
 
+  const {data} = useContext(Myrecipe);
   const [editing, setEditing] = useState(false);
   const [newIngredients,setIngredients] = useState(ingredientsObj.ingredients)
   const [newDate,setNewDate] = useState(ingredientsObj.date);
   const IngredientsTextRef = doc(dbService, "ingredientsG", `${ingredientsObj.id}`)
-
-  // console.log(
-  //   data.map((obj)=>{
-  //     return obj.hashtag
-  //   })
-  //   //data.hashtag
-  // );
+  const navigate = useNavigate();
 
   const onChange = (e) => {
     setIngredients(e.target.value)
@@ -41,7 +36,6 @@ const Ingredients = ({ ingredientsObj, isOwner }) => {
     if(ok){
       await deleteDoc(IngredientsTextRef);
     }
-    console.log(IngredientsTextRef)
   }  
 
   const toggleEditing = () => setEditing((prev)=>!prev);
@@ -66,10 +60,12 @@ const Ingredients = ({ ingredientsObj, isOwner }) => {
                 <div className='ingredients-btn'>
                   <button onClick={onDeleteClick}>삭제</button>
                   <button onClick={toggleEditing}>수정</button>
+                  <button onClick={()=>{
+                    navigate("/list", { state : ingredientsObj.ingredients})
+                  }}>레시피 검색</button>
                 </div>
               </div>
             )}
-        
          </>
         )}
     </div>

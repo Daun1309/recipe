@@ -24,18 +24,6 @@ ol, ul {
   list-style: none;
 }
 
-@-webkit-keyframes animate {
-  0% {
-    background-position: left;
-  }
-  50% {
-    background-position: right;
-  }
-  100% {
-    background-position: right;
-  }
-}
-
 @keyframes animate {
   0% {
     background-position: left;

@@ -145,9 +145,9 @@ button.topBtn {
   right: 10%;
   transform: translate(-50%, -50%);
   border: none;
-  width: 85px;
-  height: 85px;
+  width: 82px;
+  height: 82px;
   border-radius: 50%;
   background-color: rgb(32, 81, 44);
-  font-size: 2rem;
+  font-size: 0rem;
 }/*# sourceMappingURL=common.css.map */

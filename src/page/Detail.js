@@ -4,6 +4,7 @@ import {Link, useLocation} from 'react-router-dom';
 import '../css/common.scss';
 import '../css/Detail.scss';
 import {Myrecipe} from '../component/Myrecipe';
+import Top from "../component/Top";
 import { addDoc, collection,doc,deleteDoc, getDocs, query, onSnapshot, orderBy} from "firebase/firestore";
 import { dbService } from '../fbase';
 
@@ -147,6 +148,7 @@ function Detail({ data, userObj }) {
             </div>
           </div> 
         </div>
+        <Top/>
       <Footer/>
       </div>
     </>

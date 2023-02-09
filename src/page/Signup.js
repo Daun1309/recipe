@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 import "../css/Login.css"
 import "../css/common.css"
 import Footer from '../component/Footer'
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup } from 'firebase/auth';
 
-//회원가입후 메인페이지로 이동하기 !
 const Signup = () => {
 
     const [email, setEmail] = useState("");
@@ -27,20 +26,18 @@ const Signup = () => {
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
-            let data
-            const auth = getAuth()
-            //회원가입
+            let data;
+            const auth = getAuth();
             data = await createUserWithEmailAndPassword(auth, email, password);
-            console.log (data);
+            navigate("/");
         } catch(error) {
-            setError(error.message)
+            setError(" * 아이디는 이메일형식으로, 비밀번호는 6자리 이상으로 입력해 주세요.")
         }
     }
-
+  
 
     return (
         <>
-        
         <div className='header-empty-box'/>
             <div className='login-wrap'>
                 <div className='login-component'>
@@ -66,11 +63,11 @@ const Signup = () => {
                             onChange={onChange}
                         />
                         <input type="submit" value="Sign up" className='submit-btn' />            
-                        {error}
+                        <p style={{color:"red", fontSize:"15px"}}>{error}</p>
                     </form>
                 </div>
             </div>
-                <Footer/>
+            <Footer/>
         </>
     )
 }
