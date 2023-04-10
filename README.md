@@ -1,6 +1,6 @@
 # 🥦🍅🥬 냉장고 속 갖가지 레시피 Chef Lee 🧅🧄🥔
 
-![banner](https://velog.velcdn.com/images/tahl04/post/481e73a2-e1e0-48f9-b258-f31fc0487240/image.png)
+![banner](https://velog.velcdn.com/images/daun/post/ef43a2d9-cb0c-4a32-b647-1a5fe566f9d3/image.png)
 
 <br>
 
