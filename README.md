@@ -1,6 +1,6 @@
 # 🥦🍅🥬 냉장고 속 갖가지 레시피 Chef Lee 🧅🧄🥔
 
-![banner](https://ifh.cc/g/ATBgQ3.jpg)
+![banner](https://drive.google.com/file/d/1-pOHzuPPtDFrsRyCW-0lvirBg582Qs3B/view?usp=sharing)
 
 <br>
 
@@ -19,12 +19,6 @@ React를 기반으로 한 프로젝트를 만들기로 했습니다.
 
 <br>
 
-## 👾 FRONTEND MEMBERS
-
-|                    [유진열](https://github.com/jsw4215)                    |                  [김다운](https://github.com/jeongmisnu)                   |
-| :------------------------------------------------------------------------: | :------------------------------------------------------------------------: |
-| <img src="https://ifh.cc/g/2gnzss.png" alt="프로필 이미지" width="200px"/> | <img src="https://ifh.cc/g/SjQlsn.png" alt="프로필 이미지" width="200px"/> |
-|                                `Front-End`                                 |                                `Front-End`                                 |
 
 #### 유진열 🔰
 
