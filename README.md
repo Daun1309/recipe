@@ -151,7 +151,7 @@ React를 기반으로 한 프로젝트를 만들기로 했습니다.
 #### 🚥 solution
 
 - useLocation을 이용하여 페이지가 재할당 되었을 시 함수를 다시 실행하게 하여, 문제 없이 사용 할 수 있었다.
-
+</details>
 <details>
 <summary><strong> issue2: 배포 환경 </strong></summary>
 
