@@ -112,7 +112,7 @@ React를 기반으로 한 프로젝트를 만들기로 했습니다.
 
 
 <br></br>
-## 🌸 More Info
+## 🌸 와이어프레임
 
 [💾 와이어프레임](https://www.figma.com/file/CDKNOSVNT8V3OlYs3LGKxf/%EB%83%89%EC%9E%A5%EA%B3%A0?node-id=0-1&t=sGMlded8uHaRp1ZE-0)
 
