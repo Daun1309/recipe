@@ -46,6 +46,8 @@ React를 기반으로 한 프로젝트를 만들기로 했습니다.
 
 <p>
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/firebase-#FFCA28?style=for-the-badge&logo=firebase&logoColor=white">
+<img src="https://img.shields.io/badge/sass-#CC6699?style=for-the-badge&logo=sass&logoColor=white">
 <br>
 </p>
 
